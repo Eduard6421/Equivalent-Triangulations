@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1512927628 source:e:\projects\equivalent-triangulations\triangulations\main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<math.h>
+	<stdlib.h>
+	<algorithm>
+	<point.h>
+	<polygon.h>
+
+1512927653 e:\projects\equivalent-triangulations\triangulations\include\point.h
+
+1512928328 e:\projects\equivalent-triangulations\triangulations\include\polygon.h
+	<point.h>
+	<vector>
+
+1512927580 source:e:\projects\equivalent-triangulations\triangulations\src\polygon.cpp
+	"polygon.h"
+
+1512927997 source:e:\projects\equivalent-triangulations\triangulations\src\point.cpp
+	"point.h"
+	<math.h>
+	<stdlib.h>
+
