@@ -4,42 +4,41 @@
 #include <math.h>
 #include <stdlib.h>
 #include <algorithm>
-#include<point.h>
-#include<polygon.h>
+#include <point.h>
+#include <polygon.h>
+#include <triangle.h>
+
 using namespace std;
 
-ifstream f("data.in");
+vector< pair<int,int> > edges;
+vector<point> v;
 
+ifstream in("data.in");
+ofstream out("data.out");
 
-class Polygon{
-    vector<point> vertices;
-    public:
-        Polygon(){}
-        Polygon(vector<point> temp){
-            for(int i = 0; i < (int)temp.size(); i++)
-                vertices.push_back(temp[i]);
-        }
-        void triangulate(){
-            sort(vertices.begin(), vertices.end());
-
-        }
-};
 
 int main()
 {
     int n;
-    f >> n;
-    vector<point> vertice;
 
-    for(int i = 0; i < n; i++){
-        double a, b;
-        f >> a >> b;
-        point x(a, b);
-        vertice.push_back(x);
+    int i;
+
+    in>>n;
+
+    for(i = 0 ; i < n ; ++i)
+    {
+        int x,y;
+        in>>x>>y;
+
+        point temp(x,y);
+
+        v.push_back(temp);
     }
 
-    Polygon P(vertice);
-    P.triangulate();
+    out<<point::intersects(v[0],v[1],v[2],v[3]);
+
+
+
 
     return 0;
 }

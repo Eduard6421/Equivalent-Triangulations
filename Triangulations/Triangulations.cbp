@@ -34,11 +34,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="data.in" />
+		<Unit filename="data.out" />
 		<Unit filename="include/point.h" />
 		<Unit filename="include/polygon.h" />
+		<Unit filename="include/triangle.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/point.cpp" />
 		<Unit filename="src/polygon.cpp" />
+		<Unit filename="src/triangle.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
