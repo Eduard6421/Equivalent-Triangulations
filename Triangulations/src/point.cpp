@@ -27,29 +27,84 @@ point::~point()
     //dtor
 }
 
-double point::dist(point a, point b)
+double point::get_x()
 {
-    return sqrt( pow((a.x - b.x), 2) + pow((a.y - b.y), 2) );
+    return this->x;
+}
+double point::get_y()
+{
+    return this->y;
 }
 
-double point::area(point a, point b, point c)
+double point::determinant(point a,point b,point c)
 {
-    double d1 = point::dist(a, b);
-    double d2 = point::dist(b, c);
-    double d3 = point::dist(c, a);
-    double sPerimeter = (d1 + d2 + d3) / 2;
+    double d1,d2,d3,d4;
+    double answer;
 
-    return sqrt(sPerimeter*(sPerimeter - d1) * (sPerimeter - d2) * (sPerimeter - d3));
+    d1 = a.x-c.x;
+    d2 = a.y-c.y;
+    d3 = b.x-c.x;
+    d4 = b.y-c.y;
+
+    answer = d1*d4  - d2*d3;
+
+    return answer;
 }
 
-bool point::isInTriangle(point a, point b, point c)  // check using areas with Heron`s Formula
-{
-    double totalArea = point::area(a, b, c);
-    double a1 = point::area(*this, a, b);
-    double a2 = point::area(*this, b, c);
-    double a3 = point::area(*this, a, c);
 
-    return (abs(totalArea - (a1 + a2 + a3)) < 0.000005);
+double point ::area(point a,point b,point c)
+{
+    double det = point::determinant(a,b,c);
+
+    det = abs(det);
+
+    return det/2;
+}
+
+int point ::orientation(point a,point b,point c)
+{
+    int det = point::determinant(a,b,c);
+
+    if(det > 0 )
+        return 1;
+    if(det < 0 )
+        return -1;
+    else
+        return 0;
+}
+
+
+bool point :: intersect(point a,point b,point c,point d)
+{
+    int o_123,o_124,o_341,o_342;
+
+    o_123 = orientation(a,b,c);
+    o_124 = orientation(a,b,d);
+    o_341 = orientation(c,d,a);
+    o_342 = orientation(c,d,b);
+
+    if ((o_123 != o_124) && (o_341 != o_342))
+        return true;
+
+    if(o_123 == 0 && check_projections(a,b,c) )
+        return 1;
+    if(o_124 == 0 && check_projections(a,b,d) )
+        return 1;
+    if(o_341 == 0 && check_projections(c,d,a) )
+        return 1;
+    if(o_342 == 0 && check_projections(c,d,b) )
+        return 1;
+
+    return false;
+
+}
+
+bool point ::check_projections(point a,point b, point c)
+{
+
+    if(  (c.x <=max(a.x,b.x) && c.x >=min(a.x,b.x ))    &&     ( c.y <=max(a.y,b.y) && c.y >=min(a.y,b.y))    )
+        return 1;
+    return 0;
 }
 
 bool point::operator<(const point& a)
@@ -61,7 +116,7 @@ bool point::operator<(const point& a)
 
 bool point::operator==(const point& a)
 {
-    return (x == a.x) && (y == a.y);
+    return ((x == a.x) && (y == a.y));
 }
 
 point& point::operator = (const point &a)
@@ -72,104 +127,6 @@ point& point::operator = (const point &a)
 }
 
 
-
-int point:: orientation(point a,point b,point c)
-{
-
-    double slope_1;
-    double slope_2;
-
-    if(a.x == b.x && b.x == c.x)
-        return 0;       //Colinear
-
-    if(a.x!=b.x)
-        slope_1 = (a.y-b.y) / (a.x-b.x);
-    if(c.x!=b.x)
-        slope_2 = (c.y-b.y) / (c.x-b.x);
-
-    if(a.x==b.x)
-    {
-        if(c.x > a.x)
-            return 1;
-        else
-            return 0;
-    }
-
-    if(b.x==c.x)
-    {
-        if(c.x > a.x)
-        {
-            if(c.y > b.y)
-                return -1;
-            else
-                return 1;
-        }
-        else
-        {
-            if(c.y > b.y)
-                return 1;
-            else
-                return -1;
-        }
-    }
-
-
-    if(slope_1 < slope_2)
-        return -1;          //Counter Clock-Wise
-
-    if(slope_1 == slope_2)
-        return 0;           //Colinear
-
-
-    return 1;               //Clockwise
-}
-
-
-bool point::on_segment(point a,point b,point c)     // a,b = capetele segmentului nostru.
-{
-
-    if( abs(dist(a,b) - (dist(a,c)+dist(c,b))) < 0.002)
-        return true;
-
-    return false;
-
-
-
-}
-
-
-bool point::intersects(point a,point b,point c,point d)
-{
-    int orientation_1;
-    int orientation_2;
-    int orientation_3;
-    int orientation_4;
-
-    orientation_1 = point::orientation(a,b,c);
-    orientation_2 = point::orientation(a,b,d);
-    orientation_3 = point::orientation(c,d,a);
-    orientation_4 = point::orientation(c,d,b);
-
-    cout<<orientation_1<<' '<<orientation_2<<' '<<orientation_3<<' '<<orientation_4<<'\n';
-
-    if(orientation_1 != orientation_2  && orientation_3 !=orientation_4)
-        return true;
-
-
-    if(orientation_1 == 0 && on_segment(a,c,b))
-        return true;
-    if(orientation_2 == 0 && on_segment(a,d,b))
-        return true;
-    if(orientation_3 == 0 && on_segment(c,a,d))
-        return true;
-    if(orientation_4 == 0 && on_segment(c,b,d))
-        return true;
-
-
-    return false;
-
-
-}
 
 
 

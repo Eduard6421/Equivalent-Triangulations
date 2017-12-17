@@ -15,12 +15,14 @@ class point
         friend class Poylgon;
 
 
+    double get_x();
+    double get_y();
 
-    static double dist(point a, point b);
-    static double area(point a, point b, point c);
-    static bool on_segment(point a,point b,point c);
-    static int orientation(point a,point b,point c);
-    static bool intersects(point a,point b,point c,point d);
+    static double determinant(point a,point b,point c);      // find the determinant of |a,b,c|
+    static double area(point a, point b, point c);           // find the area of triangle|a,b,c|
+    static int orientation(point a,point b,point c);         // check orientation of (a,b) with c  : 1 - CCW / 0 - COL / -1 = CW
+    static bool intersect(point a,point b,point c,point d);  // check if [a,b] intersects with [c,d]
+    static bool check_projections(point a,point b, point c); // check if c is in [a,b] projection
 
     bool isInTriangle(point a, point b, point c);
 

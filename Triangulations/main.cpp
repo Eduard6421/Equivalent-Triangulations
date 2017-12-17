@@ -19,23 +19,25 @@ ofstream out("data.out");
 
 int main()
 {
-    int n;
 
-    int i;
+    int n;
+    int x,y;
 
     in>>n;
 
-    for(i = 0 ; i < n ; ++i)
+    for(int i = 0 ; i < n ; ++i)
     {
-        int x,y;
         in>>x>>y;
-
-        point temp(x,y);
-
-        v.push_back(temp);
+        v.push_back(point(x,y));
     }
 
-    out<<point::intersects(v[0],v[1],v[2],v[3]);
+    for(int i = 0 ; i < n ; ++i)
+    {
+        out<<v[i].get_x()<<' '<<v[i].get_y()<<'\n';
+
+    }
+
+    out<<point::intersect(v[0],v[1],v[2],v[3]);
 
 
 
