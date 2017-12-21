@@ -5,42 +5,150 @@
 #include <stdlib.h>
 #include <algorithm>
 #include <point.h>
-#include <polygon.h>
-#include <triangle.h>
+#include <edge.h>
+#include<triangle.h>
 
 using namespace std;
 
-vector< pair<int,int> > edges;
-vector<point> v;
+const int NMAX = 1000;
+
+vector<triangle> t1;
+vector<triangle> t2;
+int n;
+
 
 ifstream in("data.in");
 ofstream out("data.out");
 
 
-int main()
+void read_data()
 {
-
-    int n;
-    int x,y;
+    int x1,y1;
+    int x2,y2;
+    int i,j;
+    edge e1,e2,e3;
 
     in>>n;
 
-    for(int i = 0 ; i < n ; ++i)
+    for(i = 0 ; i < n ; ++i)
     {
-        in>>x>>y;
-        v.push_back(point(x,y));
+        in>>x1>>y1>>x2>>y2;
+        edge e1(point(x1,y1),point(x2,y2));
+        in>>x1>>y1>>x2>>y2;
+        edge e2(point(x1,y1),point(x2,y2));
+        in>>x1>>y1>>x2>>y2;
+        edge e3(point(x1,y1),point(x2,y2));
+
+        triangle temp(e1,e2,e3);
+        t1.push_back(temp);
     }
 
-    for(int i = 0 ; i < n ; ++i)
+
+
+
+}
+/*
+int sum;
+void solve()        // in solve o sa intre doar muchiile diferite de la inkeput
+{
+    int i,j;
+    while(!solved)
     {
-        out<<v[i].get_x()<<' '<<v[i].get_y()<<'\n';
+        solved = 1;
+
+        for(i = 0 ; i < n ; ++i)
+        {
+            if(!checked[i])
+            {
+                solved = 0;
+                break;
+            }
+        }
+
+        if(!solved)
+        {
+
+
+
+
+
+        }
+
 
     }
 
-    out<<point::intersect(v[0],v[1],v[2],v[3]);
+
+}
+*/
+
+
+void print_triangulation()
+{
+    int i;
+    for(i = 0 ; i < n ; ++i)
+    {
+        out<<t1[i].e1.start.x<<' '<<t1[i].e1.start.y<<' '<<t1[i].e1.end.x<<' '<<t1[i].e1.end.y<<'\n';
+        out<<t1[i].e2.start.x<<' '<<t1[i].e2.start.y<<' '<<t1[i].e2.end.x<<' '<<t1[i].e2.end.y<<'\n';
+        out<<t1[i].e3.start.x<<' '<<t1[i].e3.start.y<<' '<<t1[i].e3.end.x<<' '<<t1[i].e3.end.y<<'\n';
+
+        out<<'\n';
+    }
+
+
+}
+
+bool common_edge(int i,int j)
+{
+    if(i == j)
+        return false;
+    else
+        return triangle::common_edge(t1[i],t1[j]);
+
+}
+
+void delauney()
+{
+    int i,j;
+    bool flipped = true;
+    /*
+        while(flipped)
+        {
+            flipped = false;
+            for(i = 0 ; i < n ; ++i)
+                for(j = 0 ; j < n ; ++j)
+                    if(common_edge(i,j))
+                    {
+
+
+
+                    }
+
+
+    */
+
+
+    for(i = 0 ; i < n ; ++i)
+        for(j = i ; j < n ; ++j)
+            if(common_edge(i,j))
+            {
+                if(test_flip(i,j))
+                {
+                    flip();
+                    flipped = true;
+                }
+            }
 
 
 
 
-    return 0;
+
+
+}
+
+int main()
+{
+    read_data();
+    //print_triangulation();
+    delauney();
+
 }

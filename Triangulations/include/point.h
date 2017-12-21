@@ -5,14 +5,16 @@
 class point
 {
     private:
-        double x, y;
+
 
     public:
+
+                double x, y;
         point();
         point(const point &tmp);
         point(double a,double b);
         virtual ~point();
-        friend class Poylgon;
+        friend class edge;
 
 
     double get_x();

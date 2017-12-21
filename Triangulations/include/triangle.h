@@ -1,17 +1,22 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
-#include<point.h>
+#include<edge.h>
 
 class triangle
 {
-    public:
-        triangle(const point &a,const point &b,const point &c);
-        virtual ~triangle();
+public:
+    edge e1,e2,e3;
+    triangle();
+    triangle(edge a,edge b,edge c);
+    static bool common_edge(triangle t1,triangle t2);
+    static bool test_flip(triangle t1,triangle t2);
+    virtual ~triangle();
 
-    protected:
+protected:
 
-    private:
-        point p1,p2,p3;
+private:
+
+
 };
 
 #endif // TRIANGLE_H
