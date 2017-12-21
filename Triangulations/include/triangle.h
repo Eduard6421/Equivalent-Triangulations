@@ -9,7 +9,7 @@ public:
     triangle();
     triangle(edge a,edge b,edge c);
     static bool common_edge(triangle t1,triangle t2);
-    static bool test_flip(triangle t1,triangle t2);
+    static bool test_flip(triangle &t1,triangle &t2);
     virtual ~triangle();
 
 protected:

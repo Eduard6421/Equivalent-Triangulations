@@ -13,7 +13,6 @@ using namespace std;
 const int NMAX = 1000;
 
 vector<triangle> t1;
-vector<triangle> t2;
 int n;
 
 
@@ -106,49 +105,35 @@ bool common_edge(int i,int j)
 
 }
 
+bool test_flip(int i,int j)
+{
+    triangle::test_flip(t1[i],t1[j]);
+}
+
+
 void delauney()
 {
     int i,j;
     bool flipped = true;
-    /*
-        while(flipped)
-        {
-            flipped = false;
-            for(i = 0 ; i < n ; ++i)
-                for(j = 0 ; j < n ; ++j)
-                    if(common_edge(i,j))
-                    {
 
-
-
-                    }
-
-
-    */
-
-
-    for(i = 0 ; i < n ; ++i)
-        for(j = i ; j < n ; ++j)
-            if(common_edge(i,j))
-            {
-                if(test_flip(i,j))
+    while(flipped)
+    {
+        flipped = false;
+        for(i = 0 ; i < n ; ++i)
+            for(j = 0 ; j < n ; ++j)
+                if(common_edge(i,j))
                 {
-                    flip();
-                    flipped = true;
+                    if(test_flip(i,j))
+                        flipped = true;
+
                 }
-            }
-
-
-
-
-
-
+    }
 }
 
 int main()
 {
     read_data();
-    //print_triangulation();
     delauney();
+    print_triangulation();
 
 }

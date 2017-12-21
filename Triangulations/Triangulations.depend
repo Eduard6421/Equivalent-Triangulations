@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1513806141 source:e:\projects\equivalent-triangulations\triangulations\main.cpp
+1513824799 source:e:\projects\equivalent-triangulations\triangulations\main.cpp
 	<iostream>
 	<fstream>
 	<vector>
@@ -26,10 +26,12 @@
 	<stdlib.h>
 	<iostream>
 
-1513806095 source:e:\projects\equivalent-triangulations\triangulations\src\triangle.cpp
+1513824573 source:e:\projects\equivalent-triangulations\triangulations\src\triangle.cpp
 	"triangle.h"
+	<stdio.h>
+	<iostream>
 
-1513805482 e:\projects\equivalent-triangulations\triangulations\include\triangle.h
+1513822991 e:\projects\equivalent-triangulations\triangulations\include\triangle.h
 	<edge.h>
 
 1513806011 source:e:\projects\equivalent-triangulations\triangulations\src\edge.cpp
