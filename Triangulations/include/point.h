@@ -1,15 +1,13 @@
 #ifndef POINT_H
 #define POINT_H
 
-
 class point
 {
     private:
 
-
     public:
 
-                double x, y;
+        double x, y;
         point();
         point(const point &tmp);
         point(double a,double b);
@@ -22,7 +20,7 @@ class point
 
     static double determinant(point a,point b,point c);      // find the determinant of |a,b,c|
     static double area(point a, point b, point c);           // find the area of triangle|a,b,c|
-    static int orientation(point a,point b,point c);         // check orientation of (a,b) with c  : 1 - CCW / 0 - COL / -1 = CW
+    static int orientation(point a,point b,point c);         // check orientation of (a,b) with c  : 1 - CCW / 0 - COL / -1 = CCW
     static bool intersect(point a,point b,point c,point d);  // check if [a,b] intersects with [c,d]
     static bool check_projections(point a,point b, point c); // check if c is in [a,b] projection
 

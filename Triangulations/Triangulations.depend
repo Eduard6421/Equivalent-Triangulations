@@ -40,3 +40,44 @@
 1513805708 e:\projects\equivalent-triangulations\triangulations\include\edge.h
 	"point.h"
 
+1512935654 source:d:\github\equivalent-triangulations\triangulations\src\polygon.cpp
+	"polygon.h"
+	<algorithm>
+
+1512935654 d:\github\equivalent-triangulations\triangulations\include\polygon.h
+	<point.h>
+	<vector>
+
+1514220920 d:\github\equivalent-triangulations\triangulations\include\point.h
+
+1514220575 source:d:\github\equivalent-triangulations\triangulations\src\edge.cpp
+	"edge.h"
+
+1514219128 d:\github\equivalent-triangulations\triangulations\include\edge.h
+	"point.h"
+
+1514220913 source:d:\github\equivalent-triangulations\triangulations\src\point.cpp
+	"point.h"
+	<math.h>
+	<stdlib.h>
+	<iostream>
+
+1514220763 source:d:\github\equivalent-triangulations\triangulations\src\triangle.cpp
+	"triangle.h"
+	<stdio.h>
+	<iostream>
+
+1514219128 d:\github\equivalent-triangulations\triangulations\include\triangle.h
+	<edge.h>
+
+1514221356 source:d:\github\equivalent-triangulations\triangulations\main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<math.h>
+	<stdlib.h>
+	<algorithm>
+	<point.h>
+	<edge.h>
+	<triangle.h>
+

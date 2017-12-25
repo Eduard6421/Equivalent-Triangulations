@@ -51,7 +51,6 @@ bool triangle :: test_flip(triangle &t1,triangle &t2)
 
     int i,j;
 
-
     vekt1[0] = t1.e1;
     vekt1[1] = t1.e2;
     vekt1[2] = t1.e3;
@@ -61,7 +60,7 @@ bool triangle :: test_flip(triangle &t1,triangle &t2)
     vekt2[2] = t2.e3;
 
 
-    for(i = 0 ; i<3; ++i)
+    for(i = 0 ; i < 3; ++i)
         for(j = 0 ; j < 3 ; ++j)
             if(vekt1[i] == vekt2[j])
                 goto found;
@@ -77,10 +76,7 @@ found:
     std::cout<<d.x<<' '<<d.y<<'\n';
     */
 
-
     orientation = point::orientation(a,b,c);
-
-
 
     ad_x = a.x - d.x;
     ad_y = a.y - d.y;
@@ -121,11 +117,10 @@ found:
             t2.e3.end   = b;
             return 1;
         }
-
     }
     else
     {
-        if(det < 0 )
+        if(det < 0)
         {
             t1.e1.start = a;
             t1.e1.end   = c;
@@ -141,15 +136,7 @@ found:
             t2.e3.start = d;
             t2.e3.end   = b;
             return 1;
-
         }
-
-
     }
-
     return 0;
-
-
-
-
 }

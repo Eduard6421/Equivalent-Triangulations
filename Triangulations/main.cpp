@@ -12,19 +12,18 @@ using namespace std;
 
 const int NMAX = 1000;
 
-vector<triangle> t1;
+vector<triangle> t1, t2;
 int n;
-
 
 ifstream in("data.in");
 ofstream out("data.out");
 
 
-void read_data()
+void read_data(vector<triangle>& t)
 {
     int x1,y1;
     int x2,y2;
-    int i,j;
+    int i;
     edge e1,e2,e3;
 
     in>>n;
@@ -39,12 +38,8 @@ void read_data()
         edge e3(point(x1,y1),point(x2,y2));
 
         triangle temp(e1,e2,e3);
-        t1.push_back(temp);
+        t.push_back(temp);
     }
-
-
-
-
 }
 /*
 int sum;
@@ -81,37 +76,32 @@ void solve()        // in solve o sa intre doar muchiile diferite de la inkeput
 */
 
 
-void print_triangulation()
+void print_triangulation(vector<triangle>& t)
 {
     int i;
     for(i = 0 ; i < n ; ++i)
     {
-        out<<t1[i].e1.start.x<<' '<<t1[i].e1.start.y<<' '<<t1[i].e1.end.x<<' '<<t1[i].e1.end.y<<'\n';
-        out<<t1[i].e2.start.x<<' '<<t1[i].e2.start.y<<' '<<t1[i].e2.end.x<<' '<<t1[i].e2.end.y<<'\n';
-        out<<t1[i].e3.start.x<<' '<<t1[i].e3.start.y<<' '<<t1[i].e3.end.x<<' '<<t1[i].e3.end.y<<'\n';
+        out<<t[i].e1.start.x<<' '<<t[i].e1.start.y<<' '<<t[i].e1.end.x<<' '<<t[i].e1.end.y<<'\n';
+        out<<t[i].e2.start.x<<' '<<t[i].e2.start.y<<' '<<t[i].e2.end.x<<' '<<t[i].e2.end.y<<'\n';
+        out<<t[i].e3.start.x<<' '<<t[i].e3.start.y<<' '<<t[i].e3.end.x<<' '<<t[i].e3.end.y<<'\n';
 
         out<<'\n';
     }
-
-
 }
 
-bool common_edge(int i,int j)
+bool common_edge(int i,int j, vector<triangle>& t)
 {
-    if(i == j)
-        return false;
-    else
-        return triangle::common_edge(t1[i],t1[j]);
-
+    if(i != j)
+        return triangle::common_edge(t[i],t[j]);
+    return false;
 }
 
-bool test_flip(int i,int j)
+bool test_flip(int i,int j, vector<triangle>& t)
 {
-    triangle::test_flip(t1[i],t1[j]);
+    return triangle::test_flip(t[i],t[j]);
 }
 
-
-void delauney()
+void delauney(vector<triangle>& t)
 {
     int i,j;
     bool flipped = true;
@@ -121,19 +111,20 @@ void delauney()
         flipped = false;
         for(i = 0 ; i < n ; ++i)
             for(j = 0 ; j < n ; ++j)
-                if(common_edge(i,j))
+                if(common_edge(i,j, t))
                 {
-                    if(test_flip(i,j))
+                    if(test_flip(i,j, t))
                         flipped = true;
-
                 }
     }
 }
 
 int main()
 {
-    read_data();
-    delauney();
-    print_triangulation();
-
+    read_data(t1);
+    read_data(t2);
+    delauney(t1);
+    delauney(t2);
+    print_triangulation(t1);
+    print_triangulation(t2);
 }

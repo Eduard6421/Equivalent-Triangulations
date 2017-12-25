@@ -28,11 +28,10 @@ point edge::get_end()
 
 bool edge::operator==(const edge &other)
 {
-    if  ( (this->start == other.start) && (this->end == other.end) )
+    if((this->start == other.start) && (this->end == other.end))
         return true;
 
-
-    if(   (this->end ==other.start) && (this->start == other.end))
+    if((this->end == other.start) && (this->start == other.end))
         return true;
 
     return false;

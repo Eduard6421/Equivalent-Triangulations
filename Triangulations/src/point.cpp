@@ -13,7 +13,6 @@ point::point(const point &tmp)
 {
     x = tmp.x;
     y = tmp.y;
-
 }
 
 point::point(double a, double b)
@@ -50,7 +49,6 @@ double point::determinant(point a,point b,point c)
 
     return answer;
 }
-
 
 double point ::area(point a,point b,point c)
 {
@@ -96,12 +94,10 @@ bool point :: intersect(point a,point b,point c,point d)
         return 1;
 
     return false;
-
 }
 
 bool point ::check_projections(point a,point b, point c)
 {
-
     if(  (c.x <max(a.x,b.x) && c.x >min(a.x,b.x ))    &&     ( c.y <max(a.y,b.y) && c.y >min(a.y,b.y))    )  // obligatoriu mai mic!
         return 1;
     return 0;
@@ -125,8 +121,3 @@ point& point::operator = (const point &a)
     y=a.y;
     return *this;
 }
-
-
-
-
-
