@@ -4,7 +4,7 @@
 #include<fstream>
 using namespace std;
 
-
+int cnt;
 ofstream flip_out("flips.out");
 
 triangle::triangle()
@@ -73,15 +73,49 @@ bool triangle :: test_flip(triangle &t1,triangle &t2)
 found:
     a = vekt1[i].start;                // AB is the common edge of the triangles
     b = vekt1[i].end;
-    c = vekt1[(i+1)%3].end;            //C is in triangle T1 but not in T2
-    d = vekt2[(j+1)%3].end;            //D is in triangle T2 but not in T1
+
+    for(i = 0 ; i < 3; ++i)           //C is in triangle T1 but not in T2
+    {
+        if(vekt1[i].start != a &&vekt1[i].start!=b)
+        {
+            c=vekt1[i].start;
+            break;
+        }
+        if(vekt1[i].end !=a && vekt1[i].end!=b)
+        {
+            c=vekt1[i].end;
+            break;
+        }
+    }
+
+    for(i = 0 ; i < 3; ++i)           //C is in triangle T1 but not in T2
+    {
+        if(vekt2[i].start !=a &&vekt2[i].start!=b)
+        {
+            d=vekt2[i].start;
+            break;
+        }
+        if(vekt2[i].end !=a && vekt2[i].end!=b)
+        {
+            d=vekt2[i].end;
+            break;
+        }
+    }
+
+
+
+
 
     /*std::cout<<a.x<<' '<<a.y<<'\n';
     std::cout<<b.x<<' '<<b.y<<'\n';
     std::cout<<c.x<<' '<<c.y<<'\n';
     std::cout<<d.x<<' '<<d.y<<'\n';
-    */
+    cout<<'\n';
 
+    ++cnt;
+    if(cnt==2)
+        int scv=2;
+*/
     orientation = point::orientation(a,b,c);
 
     ad_x = a.x - d.x;
@@ -130,7 +164,7 @@ found:
     }
     else
     {
-        if(det <= 0)
+        if(det <0)
         {
             flip_out<<"FLIP edge "<<a.x<<' '<<a.y<<"  "<<b.x<<' '<<b.y<<"   TO   " <<c.x<<' '<<c.y<<"  "<<d.x<<' '<<d.y<<'\n';
 

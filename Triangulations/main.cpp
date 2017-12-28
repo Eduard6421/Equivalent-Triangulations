@@ -110,7 +110,7 @@ void delauney(vector<triangle>& t)
     {
         flipped = false;
         for(i = 0 ; i < n ; ++i)
-            for(j = i+1 ; j < n ; ++j)
+            for(j = 0 ; j < n ; ++j)
                 if(common_edge(i,j, t))
                 {
                     if(test_flip(i,j, t))

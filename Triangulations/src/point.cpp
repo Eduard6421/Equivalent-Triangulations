@@ -114,6 +114,17 @@ bool point::operator==(const point& a)
 {
     return ((x == a.x) && (y == a.y));
 }
+bool point::operator !=(const point &a)
+{
+
+    bool is_equal = ((*this)==a);
+
+    if(is_equal)
+        return 0;
+    return 1;
+
+
+}
 
 point& point::operator = (const point &a)
 {

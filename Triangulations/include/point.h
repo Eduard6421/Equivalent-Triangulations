@@ -28,6 +28,7 @@ class point
 
     bool operator <(const point& a);
     bool operator ==(const point& a);
+    bool operator !=(const point &a);
     point& operator = (const point &a);
 
 
