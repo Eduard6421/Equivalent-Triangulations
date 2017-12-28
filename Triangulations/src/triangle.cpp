@@ -1,6 +1,12 @@
 #include "triangle.h"
 #include<stdio.h>
 #include<iostream>
+#include<fstream>
+using namespace std;
+
+
+ofstream flip_out("flips.out");
+
 triangle::triangle()
 {
     //ctor
@@ -102,6 +108,8 @@ found:
     {
         if(det > 0)
         {
+            flip_out<<"FLIP "<<a.x<<' '<<a.y<<"  "<<b.x<<' '<<b.y<<" TO " <<c.x<<' '<<c.y<<"  "<<d.x<<' '<<d.y<<'\n';
+
             t1.e1.start = a;
             t1.e1.end   = c;
             t1.e2.start = c;
@@ -115,13 +123,17 @@ found:
             t2.e2.end   = d;
             t2.e3.start = d;
             t2.e3.end   = b;
+
             return 1;
         }
+
     }
     else
     {
-        if(det < 0)
+        if(det <= 0)
         {
+            flip_out<<"FLIP edge "<<a.x<<' '<<a.y<<"  "<<b.x<<' '<<b.y<<"   TO   " <<c.x<<' '<<c.y<<"  "<<d.x<<' '<<d.y<<'\n';
+
             t1.e1.start = a;
             t1.e1.end   = c;
             t1.e2.start = c;
@@ -137,6 +149,8 @@ found:
             t2.e3.end   = b;
             return 1;
         }
+
+
     }
     return 0;
 }

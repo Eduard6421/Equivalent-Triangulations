@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1513824799 source:e:\projects\equivalent-triangulations\triangulations\main.cpp
+1514474869 source:e:\projects\equivalent-triangulations\triangulations\main.cpp
 	<iostream>
 	<fstream>
 	<vector>
@@ -10,34 +10,35 @@
 	<edge.h>
 	<triangle.h>
 
-1513804967 e:\projects\equivalent-triangulations\triangulations\include\point.h
+1514471747 e:\projects\equivalent-triangulations\triangulations\include\point.h
 
-1512928328 e:\projects\equivalent-triangulations\triangulations\include\polygon.h
+1514470364 e:\projects\equivalent-triangulations\triangulations\include\polygon.h
 	<point.h>
 	<vector>
 
-1512928348 source:e:\projects\equivalent-triangulations\triangulations\src\polygon.cpp
+1514470364 source:e:\projects\equivalent-triangulations\triangulations\src\polygon.cpp
 	"polygon.h"
 	<algorithm>
 
-1513791881 source:e:\projects\equivalent-triangulations\triangulations\src\point.cpp
+1514470364 source:e:\projects\equivalent-triangulations\triangulations\src\point.cpp
 	"point.h"
 	<math.h>
 	<stdlib.h>
 	<iostream>
 
-1513824573 source:e:\projects\equivalent-triangulations\triangulations\src\triangle.cpp
+1514474858 source:e:\projects\equivalent-triangulations\triangulations\src\triangle.cpp
 	"triangle.h"
 	<stdio.h>
 	<iostream>
+	<fstream>
 
-1513822991 e:\projects\equivalent-triangulations\triangulations\include\triangle.h
+1514470364 e:\projects\equivalent-triangulations\triangulations\include\triangle.h
 	<edge.h>
 
-1513806011 source:e:\projects\equivalent-triangulations\triangulations\src\edge.cpp
+1514470364 source:e:\projects\equivalent-triangulations\triangulations\src\edge.cpp
 	"edge.h"
 
-1513805708 e:\projects\equivalent-triangulations\triangulations\include\edge.h
+1514470364 e:\projects\equivalent-triangulations\triangulations\include\edge.h
 	"point.h"
 
 1512935654 source:d:\github\equivalent-triangulations\triangulations\src\polygon.cpp
