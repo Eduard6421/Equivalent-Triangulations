@@ -8,6 +8,7 @@
 #include <edge.h>
 #include<triangle.h>
 
+
 using namespace std;
 
 const int NMAX = 1000;
@@ -117,6 +118,7 @@ void delauney(vector<triangle>& t)
                         flipped = true;
                 }
     }
+    triangle::ended();
 }
 
 int main()

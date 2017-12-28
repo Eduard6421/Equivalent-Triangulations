@@ -4,8 +4,9 @@
 #include<fstream>
 using namespace std;
 
-int cnt;
 ofstream flip_out("flips.out");
+int cnt;
+
 
 triangle::triangle()
 {
@@ -187,4 +188,10 @@ found:
 
     }
     return 0;
+}
+
+void triangle:: ended()
+{
+    flip_out<<"\n\n---end---\n\n";
+
 }

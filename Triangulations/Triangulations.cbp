@@ -37,6 +37,7 @@
 		</Compiler>
 		<Unit filename="data.in" />
 		<Unit filename="data.out" />
+		<Unit filename="flips.out" />
 		<Unit filename="include/edge.h">
 			<Option virtualFolder="src/" />
 		</Unit>

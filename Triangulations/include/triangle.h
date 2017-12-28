@@ -11,6 +11,7 @@ public:
     static bool common_edge(triangle t1,triangle t2);
     static bool test_flip(triangle &t1,triangle &t2);
     virtual ~triangle();
+    static void ended();
 
 protected:
 
