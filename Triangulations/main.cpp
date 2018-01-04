@@ -124,9 +124,9 @@ void delauney(vector<triangle>& t)
 int main()
 {
     read_data(t1);
-    read_data(t2);
+   read_data(t2);
     delauney(t1);
-    delauney(t2);
+   delauney(t2);
     print_triangulation(t1);
     out<<"---end---\n\n";
     print_triangulation(t2);

@@ -1,8 +1,10 @@
-FLIP edge 0 3  2 0   TO   0 1  2 3
+FLIP edge 2 4  2 0   TO   0 2  4 2
 
 
 ---end---
 
+FLIP edge 6 2  2 4   TO   4 2  8 4
+FLIP edge 4 2  8 0   TO   6 2  2 0
 
 
 ---end---

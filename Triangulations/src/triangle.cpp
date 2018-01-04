@@ -116,7 +116,7 @@ found:
     ++cnt;
     if(cnt==2)
         int scv=2;
-*/
+    */
     orientation = point::orientation(a,b,c);
 
     ad_x = a.x - d.x;
@@ -139,6 +139,86 @@ found:
     /*std::cout<<orientation<<'\n';
     std::cout<<det;
     */
+
+    if(det == 0)
+    {
+        if(a.x==b.x)
+        { flip_out<<"FLIP edge "<<a.x<<' '<<a.y<<"  "<<b.x<<' '<<b.y<<"   TO   " <<c.x<<' '<<c.y<<"  "<<d.x<<' '<<d.y<<'\n';
+
+            t1.e1.start = a;
+            t1.e1.end   = c;
+            t1.e2.start = c;
+            t1.e2.end   = d;
+            t1.e3.start = d;
+            t1.e3.end   = a;
+
+            t2.e1.start = b;
+            t2.e1.end   = c;
+            t2.e2.start = c;
+            t2.e2.end   = d;
+            t2.e3.start = d;
+            t2.e3.end   = b;
+            return 1;
+        }
+
+        else
+        {
+            if(b.x > a.x && b.y < a.y)
+            {
+
+                flip_out<<"FLIP edge "<<a.x<<' '<<a.y<<"  "<<b.x<<' '<<b.y<<"   TO   " <<c.x<<' '<<c.y<<"  "<<d.x<<' '<<d.y<<'\n';
+
+
+                t1.e1.start = a;
+                t1.e1.end   = c;
+                t1.e2.start = c;
+                t1.e2.end   = d;
+                t1.e3.start = d;
+                t1.e3.end   = a;
+
+                t2.e1.start = b;
+                t2.e1.end   = c;
+                t2.e2.start = c;
+                t2.e2.end   = d;
+                t2.e3.start = d;
+                t2.e3.end   = b;
+                return 1;
+            }
+            if(b.x < a.x && b.y > a.y)
+            {
+
+                flip_out<<"FLIP edge "<<a.x<<' '<<a.y<<"  "<<b.x<<' '<<b.y<<"   TO   " <<c.x<<' '<<c.y<<"  "<<d.x<<' '<<d.y<<'\n';
+
+                t1.e1.start = a;
+                t1.e1.end   = c;
+                t1.e2.start = c;
+                t1.e2.end   = d;
+                t1.e3.start = d;
+                t1.e3.end   = a;
+
+                t2.e1.start = b;
+                t2.e1.end   = c;
+                t2.e2.start = c;
+                t2.e2.end   = d;
+                t2.e3.start = d;
+                t2.e3.end   = b;
+                return 1;
+
+
+            }
+
+
+
+
+
+        }
+
+
+
+
+    }
+
+
     if(orientation > 0)
     {
         if(det > 0)
